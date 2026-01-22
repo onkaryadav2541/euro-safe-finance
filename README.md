@@ -1,27 +1,19 @@
-# EuroSafe - GDPR Compliant Expense Tracker
+# 🛡️ EuroSafe: Student Safety Platform
 
-## 🚀 Project Overview
-EuroSafe is a secure, GDPR-compliant backend system for tracking personal expenses. Built with modern Java standards, it emphasizes data privacy and clean architecture.
+EuroSafe is a backend system designed to ensure the safety of international students in Europe. It provides real-time emergency response features, secure location tracking, and incident reporting.
 
-## 🛠 Tech Stack
-* **Language:** Java 21 (LTS)
-* **Framework:** Spring Boot 3.4
-* **Database:** PostgreSQL 16 (Dockerized)
+## 🚀 Key Features
+* **SOS Alert System:** Instantly logs user location (Latitude/Longitude) during emergencies.
+* **Secure Identity:** Modern BCrypt encryption to protect student data.
+* **Incident Reporting:** Tracks safety incidents with status updates (OPEN/RESOLVED).
+* **Dockerized Database:** Runs on a containerized PostgreSQL instance for reliability.
+
+## 🛠️ Tech Stack
+* **Language:** Java 23
+* **Framework:** Spring Boot 3
+* **Database:** PostgreSQL (Docker)
+* **Security:** Spring Security & BCrypt
 * **Build Tool:** Maven
 
-## ⚙️ Setup & Installation
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/onkaryadav2541/euro-safe-finance.git](https://github.com/onkaryadav2541/euro-safe-finance.git)
-    ```
-2.  **Start the Database:**
-    ```bash
-    docker-compose up -d
-    ```
-3.  **Run the Application:**
-    ```bash
-    mvn spring-boot:run
-    ```
-
-## 🔒 Security
-This project follows strict data minimization principles to comply with EU GDPR standards.
+## 🎯 Project Goals
+To build a scalable, GDPR-compliant safety network that allows students to study abroad with peace of mind.
