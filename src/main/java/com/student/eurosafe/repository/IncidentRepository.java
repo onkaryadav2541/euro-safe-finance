@@ -8,6 +8,11 @@ import java.util.List;
 
 @Repository
 public interface IncidentRepository extends JpaRepository<Incident, Long> {
-    // Custom query: Find all incidents reported by a specific user
+    
+    // Find all incidents reported by a specific user (History)
     List<Incident> findByUserId(Long userId);
+
+    // NEW: Find all incidents that are currently active (The Safe Map)
+    // This allows us to get a list of everything with status="OPEN"
+    List<Incident> findByStatus(String status);
 }
