@@ -54,12 +54,11 @@ public class IncidentController {
         return ResponseEntity.status(404).build();
     }
 
-    // 3. Resolve Incident: Mark as "Safe" (NEW FEATURE)
+    // 3. Resolve Incident: Mark as "Safe"
     @PatchMapping("/{id}/resolve")
     public ResponseEntity<?> resolveIncident(@PathVariable Long id, Principal principal) {
         String username = principal.getName();
         
-        // Find the incident by ID
         Optional<Incident> incidentOptional = incidentRepository.findById(id);
 
         if (incidentOptional.isEmpty()) {
@@ -68,16 +67,22 @@ public class IncidentController {
 
         Incident incident = incidentOptional.get();
 
-        // SECURITY CHECK: Ensure the user trying to resolve it actually OWNS the incident
-        // (We don't want User A closing User B's emergency alert!)
+        // Check ownership
         if (!incident.getUser().getUsername().equals(username)) {
             return ResponseEntity.status(403).body("You are not allowed to modify this incident");
         }
 
-        // Mark as resolved
         incident.setStatus("RESOLVED");
         incidentRepository.save(incident);
 
         return ResponseEntity.ok("Incident marked as RESOLVED. You are safe.");
+    }
+
+    // 4. Community Safety: See all ACTIVE alerts (NEW for Day 11)
+    @GetMapping("/active")
+    public ResponseEntity<List<Incident>> getActiveIncidents() {
+        // Fetch only the incidents that are still happening
+        List<Incident> activeIncidents = incidentRepository.findByStatus("OPEN");
+        return ResponseEntity.ok(activeIncidents);
     }
 }
