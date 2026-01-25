@@ -1,6 +1,8 @@
 package com.student.eurosafe.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,12 +13,22 @@ public class Incident {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Location Data (The most important part)
+    // --- NEW VALIDATION RULES ADDED BELOW ---
+
+    @NotNull(message = "Latitude is required")
+    @Column(nullable = false)
     private Double latitude;
+
+    @NotNull(message = "Longitude is required")
+    @Column(nullable = false)
     private Double longitude;
 
-    private String description; // e.g., "I feel unsafe", "Theft", "Medical"
+    @NotBlank(message = "Description cannot be empty")
+    @Column(nullable = false)
+    private String description; 
     
+    // ----------------------------------------
+
     // Valid values: "OPEN", "RESOLVED"
     private String status = "OPEN"; 
 
