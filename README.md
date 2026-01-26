@@ -45,5 +45,10 @@ EuroSafe is a backend API built to ensure the safety of students in Europe. It a
 **Version 1.0 Completed.**
 *Developed as part of a 15-Day Spring Boot Engineering Challenge.*
 
+## 🔮 Future Roadmap
+- [ ] Admin Dashboard
+- [ ] Email Notifications
+- [ ] Radius Search
+
 ## Created by 
 **Onkar Yadav**
